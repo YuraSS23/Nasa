@@ -44,7 +44,7 @@ export const Page = () => {
     return <Container>
             <h1 className={s.h1}>NASA picture of the day</h1>
             <FlexWrapper justify={"center"} align={"center"} gap={"20px"} margin={"50px 0 50px"}>
-                <span>Input date</span>
+                <span>Input date range</span>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
                         format={"DD/MM/YYYY"}
@@ -70,7 +70,7 @@ export const Page = () => {
                 <Button onClick={onButtonClick} variant="contained">Set date interval</Button>
             </FlexWrapper>
             <FlexWrapper justify={"center"} align={"center"} gap={"20px"} margin={"50px 0 50px"}>
-                <span>Input current date</span>
+                <span>Input specific date</span>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
                         format={"DD/MM/YYYY"}
