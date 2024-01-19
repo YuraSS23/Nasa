@@ -5,6 +5,9 @@ import axios from "axios";
 import preloader from "./assets/images/30.gif"
 import {Container} from "./components/Container";
 import {FlexWrapper} from "./components/Flex-wrapper";
+import {Button, TextField} from "@mui/material";
+import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
 function App() {
     let dayFormatter = new Intl.DateTimeFormat("en", {
@@ -22,7 +25,6 @@ function App() {
     const [currentDate, setCurrentDate] = useState(date)
     const [src, setSrc] = useState([])
     const [request, setRequest] = useState(false)
-    debugger
     useEffect(() => {
         axios.get(`https://api.nasa.gov/planetary/apod?api_key=EfaW0Se22lvyshyw2NjYZrUgvxLEX8pp3mVtUmEl`)
             .then((response) => setSrc([response.data]))
@@ -51,14 +53,42 @@ function App() {
                 <h1>NASA picture of the day</h1>
                 <div className={"date-wrapper"}>
                     <span>Input date</span>
-                    <input value={startDate} onChange={(e) => setStartDate(e.currentTarget.value)} type={"date"}/>
-                    <input value={endDate} onChange={(e) => setEndDate(e.currentTarget.value)} type={"date"}/>
-                    <button onClick={onButtonClick}>Get data</button>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker
+                            label="Start date"
+                            value={""}
+                            onChange={(newValue) => {
+                                const lDate = `${yearFormatter.format(newValue.$d)}-${monthFormatter.format(newValue.$d)}-${dayFormatter.format(newValue.$d)}`
+                                setStartDate(lDate)
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                        <DatePicker
+                            label="End date"
+                            value={""}
+                            onChange={(newValue) => {
+                                const lDate = `${yearFormatter.format(newValue.$d)}-${monthFormatter.format(newValue.$d)}-${dayFormatter.format(newValue.$d)}`
+                                setEndDate(lDate)
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </LocalizationProvider>
+                    <Button onClick={onButtonClick} variant="contained">Set date interval</Button>
                 </div>
                 <div className={"date-wrapper"}>
                     <span>Input current date</span>
-                    <input value={currentDate} onChange={(e) => setCurrentDate(e.currentTarget.value)} type={"date"}/>
-                    <button onClick={onButton2Click}>Get data</button>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker
+                            label="Specific date"
+                            value={""}
+                            onChange={(newValue) => {
+                                const lDate = `${yearFormatter.format(newValue.$d)}-${monthFormatter.format(newValue.$d)}-${dayFormatter.format(newValue.$d)}`
+                                setCurrentDate(lDate)
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </LocalizationProvider>
+                    <Button onClick={onButton2Click} variant="contained">Set specific date</Button>
                 </div>
                 <FlexWrapper wrap={"wrap"} justify={"space-around"} gap={"20px"}>
                     {request ? <img src={preloader} height={"500px"} width={"500px"} alt={"preloader"} className={"nasa-img"}/>
