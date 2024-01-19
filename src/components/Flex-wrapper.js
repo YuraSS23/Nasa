@@ -8,5 +8,6 @@ export const FlexWrapper = styled.div`
   align-items: ${props => props.align || "stretch"};
   flex-wrap: ${props => props.wrap || "nowrap"};
   height: 100%;
-  gap: ${props => props.gap || "0"};;
+  gap: ${props => props.gap || "0"};
+  margin: ${props => props.margin || "0"};
 `
