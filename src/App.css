@@ -1,12 +1,13 @@
-.img-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+h1 {
+    text-align: center;
 }
 .date-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 0 50px;
+    margin: 50px 0 50px;
+    gap: 20px
+}
+.nasa-img {
+    padding: 10px;
 }
