@@ -47,6 +47,7 @@ export const Page = () => {
                 <span>Input date</span>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
+                        format={"DD/MM/YYYY"}
                         label="Start date"
                         value={""}
                         onChange={(newValue) => {
@@ -56,6 +57,7 @@ export const Page = () => {
                         renderInput={(params) => <TextField {...params} />}
                     />
                     <DatePicker
+                        format={"DD/MM/YYYY"}
                         label="End date"
                         value={""}
                         onChange={(newValue) => {
@@ -71,6 +73,7 @@ export const Page = () => {
                 <span>Input current date</span>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
+                        format={"DD/MM/YYYY"}
                         label="Specific date"
                         value={""}
                         onChange={(newValue) => {
