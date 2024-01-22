@@ -1,9 +1,9 @@
 import React from "react";
 import './App.css';
-import {Page} from "./Page";
+import {PageContainer} from "./PageContainer";
 
 function App() {
-    return <Page />
+    return <PageContainer />
 }
 
 export default App;
