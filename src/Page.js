@@ -17,17 +17,18 @@ import {
     startDateAC,
     yearFormatter
 } from "./redux/reducer";
+import {api} from "./api/api";
 
 export const Page = () => {
     let dispatch = useDispatch()
     const state = useSelector(state => state.appPage)
     useEffect(() => {
-        axios.get(`https://api.nasa.gov/planetary/apod?api_key=EfaW0Se22lvyshyw2NjYZrUgvxLEX8pp3mVtUmEl`)
+        api.getStartData()
             .then((response) => dispatch(srcAC([response.data])))
     }, [])
     const onButtonClick = () => {
         dispatch(requestAC(true))
-        axios.get(`https://api.nasa.gov/planetary/apod?api_key=EfaW0Se22lvyshyw2NjYZrUgvxLEX8pp3mVtUmEl&start_date=${state.startDate}&end_date=${state.endDate}`)
+        api.getDataFromInterval(state.startDate, state.endDate)
             .then((response) => {
                 dispatch(srcAC(response.data))
                 dispatch(requestAC(false))
@@ -35,7 +36,7 @@ export const Page = () => {
     }
     const onButton2Click = () => {
         dispatch(requestAC(true))
-        axios.get(`https://api.nasa.gov/planetary/apod?api_key=EfaW0Se22lvyshyw2NjYZrUgvxLEX8pp3mVtUmEl&start_date=${state.currentDate}&end_date=${state.currentDate}`)
+        api.getDataFromCurrentDay(state.currentDate)
             .then((response) => {
                 dispatch(srcAC(response.data))
                 dispatch(requestAC(false))
