@@ -23,26 +23,26 @@ let initialState = {
     request: false
 }
 
-export const Reducer  = (state=initialState, action) => {
+export const Reducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_START_DATE:
             return {...state, startDate: action.date}
         case SET_END_DATE:
-            return {...state,endDate: action.date}
+            return {...state, endDate: action.date}
         case SET_CURRENT_DATE:
             return {...state, currentDate: action.date}
-        case SET_SRC:{
+        case SET_SRC: {
             return {...state, src: [...action.src]}
         }
         case SET_REQUEST:
             return {...state, request: action.value}
         default:
-            return {...state}
+            return state
     }
 }
 
-export const startDateAC = (date)=>({type: SET_START_DATE, date})
-export const endDateAC = (date)=>({type: SET_END_DATE, date})
-export const currentDateAC = (date)=>({type: SET_CURRENT_DATE, date})
-export const requestAC = (value)=>({type: SET_REQUEST, value})
-export const srcAC = (src)=>({type: SET_SRC, src})
+export const startDateAC = (date) => ({type: SET_START_DATE, date})
+export const endDateAC = (date) => ({type: SET_END_DATE, date})
+export const currentDateAC = (date) => ({type: SET_CURRENT_DATE, date})
+export const requestAC = (value) => ({type: SET_REQUEST, value})
+export const srcAC = (src) => ({type: SET_SRC, src})

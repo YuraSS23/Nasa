@@ -3,7 +3,7 @@ import './App.css';
 import {PageContainer} from "./PageContainer";
 
 function App() {
-    return <PageContainer />
+    return <PageContainer/>
 }
 
 export default App;

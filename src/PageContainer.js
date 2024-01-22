@@ -44,10 +44,10 @@ export const PageContainer = () => {
         const lDate = `${yearFormatter.format(newValue.$d)}-${monthFormatter.format(newValue.$d)}-${dayFormatter.format(newValue.$d)}`
         dispatch(currentDateAC(lDate))
     }
-    return <Page onButtonGetDataFromIntervalClick = {onButtonGetDataFromIntervalClick}
-                 onButtonGetDataFromCurrentDayClick = {onButtonGetDataFromCurrentDayClick}
-                 onStartDateChange = {onStartDateChange}
-                 onEndDateChange = {onEndDateChange}
-                 onCurrentDateChange = {onCurrentDateChange}
+    return <Page onButtonGetDataFromIntervalClick={onButtonGetDataFromIntervalClick}
+                 onButtonGetDataFromCurrentDayClick={onButtonGetDataFromCurrentDayClick}
+                 onStartDateChange={onStartDateChange}
+                 onEndDateChange={onEndDateChange}
+                 onCurrentDateChange={onCurrentDateChange}
     />
 }
